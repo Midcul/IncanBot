@@ -24,6 +24,6 @@ An expedtion ends when all explorers have returned home, or two hazards of the s
 🏆 = 5 points each for the first three drawn, and 10 points each for the last two.
 
 # Using the bot
-Change the discord token parameter to be your own, invite the bot to your server, and use !start to begin play. Currently, the bot turns itself off after the game is complete.
+Change the discord token parameter to be your own, invite the bot to your server, and use !start. Currently, the bot turns itself off after the game is complete.
 
 Happy exploring!
