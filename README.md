@@ -6,12 +6,12 @@ Deck of cards: 15 cards with a range of 1-15 gems(💎), 15 hazard cards (3 copi
 
 The game contains a series of five expeditions. At the beginning of each expedition, the deck is shuffled.
 
-The top card is revealed. Here are the possible outcomes:  
-💎: gems are split among the explorers equally, with any remainder being left unclaimed.  
-🏆: the artifact is left unclaimed until a sole explorer returns to camp. It is removed from the deck for future expeditions.  
+__The top card is revealed. Here are the possible outcomes:__  
+💎: Gems are split among the explorers equally, with any remainder being left unclaimed.  
+🏆: The artifact is left unclaimed until a sole explorer returns to camp. It is removed from the deck for future expeditions.  
 🔥🕸️🧟🗿🐍: If it is the first occurrence of a specific hazard, nothing happens. If it is the second occurrence of a specific hazard, remaining explorers must abandon their wealth to flee.  
 
-After revealing the top card, explorers can choose either:  
+__After revealing the top card, explorers can choose either:__  
 EXPLORE FURTHER: Remain in the expedition, sharing wealth from future gem cards.  
 RETURN HOME: Leave the expedition, safely scoring their share of gems and the unclaimed gems that were not distributed to explorers prior. When multiple explorers return home, unclaimed gems are divided equally. If only one explorer returns home, they keep any revealed artifacts for themself.  
 
