@@ -27,6 +27,6 @@ An expedtion ends when all explorers have returned home, or two hazards of the s
 
 # Scoring
 💎 = 1 point  
-🏆 = 5 points each for the first three drawn, and 10 points each for the last two.
+🏆 = 5 points each for the first three drawn, and 10 points each for the next two
 
 Happy exploring!
