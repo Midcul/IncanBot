@@ -6,7 +6,7 @@ Change the discord token parameter to be your own, invite the bot to your server
 
 # How to play Incan Gold
 __Deck of cards:__  
-15 cards with a range of 1-15 gems(💎)  
+15 cards with a range of 1-15 gems (💎)  
 15 hazard cards (3 copies each of 5 different types 🔥🕸️🧟🗿🐍)  
 5 artifact cards (🏆)  
 
