@@ -95,10 +95,12 @@ async def set_up_interface(ctx):  # Set up interface
                                        style=discord.ButtonStyle.blurple,
                                        custom_id="explore_button")
     explore_button.callback = explore_button_press
+
     return_button = discord.ui.Button(label="Return home",
                                       style=discord.ButtonStyle.green,
                                       custom_id="return_button")
     return_button.callback = return_button_press
+
     view.add_item(explore_button)
     view.add_item(return_button)
 
@@ -111,12 +113,11 @@ async def set_up_interface(ctx):  # Set up interface
     async def end_game():
         await ctx.send("Game over")
         quit()
-        # Rematch option
-        # Delete all messages, show score breakdown for each expedition?
 
     async def expedition():
         nonlocal expedition_index
         expedition_index += 1
+
         if expedition_index > 5:
             await end_game()
             return
@@ -130,8 +131,10 @@ async def set_up_interface(ctx):  # Set up interface
 
         while len(remaining_players) > 0:
             latest_card = deck[expedition_steps - 1]
+
             if latest_card == u"\U0001f3c6":  # Idol drawn
                 idols_remaining -= 1
+
             await players_state.edit(content=f"**Responses:** {decision_dict.keys()}", view=view)
             await game_state.edit(content=f"**Expedition {expedition_index} of 5:** {deck[:expedition_steps]}")
 
@@ -151,16 +154,26 @@ async def set_up_interface(ctx):  # Set up interface
             # Below: decisions made, game updated
 
             returning_players = [key for key, value in decision_dict.items() if value == "Return"]
+
             if len(returning_players) > 0:
                 payout, unclaimed = game.update_after_decisions(shared, unclaimed, returning_players)
                 idols_present, num_idols, total_value = game.check_idols(deck[:expedition_steps], idols_remaining)
+
                 if len(returning_players) == 1 and idols_present:
                     await gem_state.edit(content=f"{returning_players} escapes alone with {payout} gems and "
                                                  f"{num_idols} idols worth {total_value} points.")
                     score_dict[returning_players[0]] += total_value
+
+                    for i in range(num_idols):
+                        deck.remove(u"\U0001f3c6")  # Take out idols
+                        expedition_steps -= 1       # To account for idol removal
+                        await game_state.edit(      # Show the new set of cards w/ idols removed
+                            content=f"**Expedition {expedition_index} of 5:** {deck[:expedition_steps]}")
+
                 else:
                     await gem_state.edit(content=f"{returning_players} returns with {payout} gems each. "
                                                  f"{unclaimed} gems go unclaimed.")
+
                 for i in returning_players:
                     score_dict[i] += payout
                     remaining_players.remove(i)
@@ -172,7 +185,7 @@ async def set_up_interface(ctx):  # Set up interface
 
         await gem_state.edit(content=f"Expedition {expedition_index} has ended. Current scores: {score_dict}")
         time.sleep(2)
-        await expedition()
+        await expedition()  # Keep calling this function to update the game until game over
 
     await expedition()  # Initial function call to begin the game
 
